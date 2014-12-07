@@ -1,4 +1,4 @@
-package com.scalosoft.demo.data;
+package com.scalosoft.template.data;
 
 
 import javax.persistence.EntityManager;

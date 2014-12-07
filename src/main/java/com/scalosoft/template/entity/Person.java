@@ -1,4 +1,4 @@
-package com.scalosoft.demo.entity;
+package com.scalosoft.template.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

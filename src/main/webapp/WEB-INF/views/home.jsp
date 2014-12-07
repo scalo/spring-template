@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Home Spring Template</title>
 </head>
 <style type="text/css">
 table, th, td {
@@ -14,7 +14,7 @@ table, th, td {
 
 
 <h1>
-	Hello world!  
+	Hello Spring Template!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>

@@ -15,15 +15,7 @@
 	<!-- Instruct Spring to perform declarative transaction management automatically on annotated classes. proxy-target-class="true" -->
 	<tx:annotation-driven mode="proxy" transaction-manager="transactionManager" />
 
-
-	<!-- Configurer that replaces ${...} placeholders with values from a properties file -->
-	<!-- (in this case, settings for the dataSource definition below) 
- 	<context:property-placeholder location="classpath:spring/spring-demo.properties" system-properties-mode="OVERRIDE" /> 
-
-	<util:properties id="demoProperties" location="classpath:spring/spring-demo.properties" />
-	<context:property-placeholder properties-ref="demoProperties" />
-	-->
-	<context:property-placeholder location="classpath:spring/spring-demo.properties" />
+	<context:property-placeholder location="classpath:spring/spring-template.properties" />
 	
 	<!-- ========================= DB DEFINITIONS ========================= -->
 	<!-- Uses Apache Commons DBCP for connection pooling. See Commons DBCP documentation for the required JAR files. Alternatively you can use another connection pool 
@@ -44,7 +36,7 @@
 	<!-- JPA EntityManagerFactory -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="persistenceUnitName" value="spring-demo" />
+		<property name="persistenceUnitName" value="spring-template" />
 		<property name="persistenceXmlLocation" value="classpath:spring/persistence.xml"></property>
 		<!-- <property name="persistenceXmlLocation" value="classpath*:/META-INF/persistence.xml"></property> -->
 		<property name="jpaVendorAdapter">
