@@ -1,4 +1,4 @@
-package com.scalosoft.template.entity;
+package com.scalosoft.template.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,6 +23,7 @@ public class Person {
 	private String email;
 	private BigDecimal cost;
 	private Date startDate;
+	private Date modTimestamp;
 	
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
@@ -58,11 +59,11 @@ public class Person {
 	public BigDecimal getCost() {
 		return cost;
 	}
-	
+
 	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
-	
+		
 	@Temporal(TemporalType.DATE)
 	@Column( name="start_date")
 	public Date getStartDate() {
@@ -71,6 +72,16 @@ public class Person {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
+	}
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column( name="mod_timestamp")
+	public Date getModTimestamp() {
+		return modTimestamp;
+	}
+
+	public void setModTimestamp(Date modTimestamp) {
+		this.modTimestamp = modTimestamp;
 	}
 
 }
