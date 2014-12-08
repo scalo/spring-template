@@ -12,7 +12,10 @@ SET default_with_oids = false;
 CREATE TABLE person (
     id integer NOT NULL,
     name character varying(50),
-    email character varying(100)
+    email character varying(100),
+    cost numeric(8,2),
+    start_date date,
+    mod_timestamp timestamp without time zone
 );
 
 
@@ -56,10 +59,14 @@ ALTER TABLE ONLY person ALTER COLUMN id SET DEFAULT nextval('person_id_seq'::reg
 -- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: spring
 --
 
-INSERT INTO person (id, name, email) VALUES (4, 'topolino', 'topolino@disney.com');
-INSERT INTO person (id, name, email) VALUES (1, 'pippo', 'pippo@disney.com');
-INSERT INTO person (id, name, email) VALUES (2, 'pluto', 'pluto@disney.com');
-INSERT INTO person (id, name, email) VALUES (3, 'paperino', 'paperino@disney.com');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (1, 'pippo', 'pippo@disney.com', 12.50, '2014-12-08', '2014-12-08 11:59:32.425012');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (2, 'pluto', 'pluto@disney.com', 20.34, '2014-12-08', '2014-12-08 11:59:35.641005');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (3, 'paperino', 'paperino@disney.com', 120.20, '2014-12-08', '2014-12-08 11:59:38.464772');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (4, 'topolino', 'topolino@disney.com', 2.30, '2014-12-08', '2014-12-08 11:59:41.016121');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (5, 'ciccio', 'ciccio@pasticcio.com', 0.40, '2014-12-08', '2014-12-08 11:59:43.568671');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (6, 'pino', 'pino@pinuccio.com', 34.00, '2014-12-08', '2014-12-08 11:59:46.104837');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (7, 'franco', 'fraco@ff.com', 133.00, '2014-12-08', '2014-12-08 11:59:49.240798');
+INSERT INTO person (id, name, email, cost, start_date, mod_timestamp) VALUES (8, 'gianni', 'pinoli', 120.00, '2014-12-08', '2014-12-08 11:59:54.400757');
 
 
 --
@@ -68,7 +75,7 @@ INSERT INTO person (id, name, email) VALUES (3, 'paperino', 'paperino@disney.com
 -- Name: person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: spring
 --
 
-SELECT pg_catalog.setval('person_id_seq', 4, true);
+SELECT pg_catalog.setval('person_id_seq', 8, true);
 
 
 --
@@ -78,22 +85,3 @@ SELECT pg_catalog.setval('person_id_seq', 4, true);
 
 ALTER TABLE ONLY person
     ADD CONSTRAINT person_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 1981 (class 0 OID 0)
--- Dependencies: 5
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
--- Completed on 2014-12-07 23:05:34 CET
-
---
--- PostgreSQL database dump complete
---
