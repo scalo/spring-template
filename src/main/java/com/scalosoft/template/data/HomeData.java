@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.scalosoft.template.entity.Person;
 
 @Repository
+@Transactional
 public class HomeData extends BaseData {
 	
 	@SuppressWarnings("unchecked")
@@ -17,4 +18,13 @@ public class HomeData extends BaseData {
 		List<Person> listaEntity = getEntityManager().createQuery(queryStr).getResultList();
 		return listaEntity;
 	}
+	
+	@Transactional
+	public void insertPerson(Person form){
+		Person person = new Person();
+		person.setName(form.getName());
+		person.setEmail(form.getEmail());
+		getEntityManager().persist(person);
+	}
+	
 }

@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+	    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/data/jpa 
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:annotation-config />
 
 	<!-- Instruct Spring to perform declarative transaction management automatically on annotated classes. proxy-target-class="true" -->
-	<tx:annotation-driven mode="proxy" transaction-manager="transactionManager" />
+	<tx:annotation-driven  mode="proxy" transaction-manager="transactionManager" />
 
 	<context:property-placeholder location="classpath:spring/spring-template.properties" />
 	
@@ -37,7 +48,7 @@
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="persistenceUnitName" value="spring-template" />
-		<property name="persistenceXmlLocation" value="classpath:spring/persistence.xml"></property>
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"></property>
 		<!-- <property name="persistenceXmlLocation" value="classpath*:/META-INF/persistence.xml"></property> -->
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -64,5 +75,13 @@
 
 	<!-- Dozer <bean id="dozerMapper" class="org.dozer.DozerBeanMapper" scope="singleton"> <property name="mappingFiles"> <list> <value>META-INF/dozer-bean-mappings.xml</value> 
 		</list> </property> </bean> -->
-
+	
+	<mvc:annotation-driven />
+	
+	<tx:annotation-driven />
+	
+	<context:component-scan base-package="com.scalosoft.template.controller,com.scalosoft.template.entity,com.scalosoft.template.data" />
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
 </beans>
