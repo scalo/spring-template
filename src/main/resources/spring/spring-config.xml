@@ -70,12 +70,8 @@
 	<!-- Dozer <bean id="dozerMapper" class="org.dozer.DozerBeanMapper" scope="singleton"> <property name="mappingFiles"> <list> <value>META-INF/dozer-bean-mappings.xml</value> 
 		</list> </property> </bean> -->
 	
-	<mvc:annotation-driven />
+
 	
 	<tx:annotation-driven />
-	
-	<context:component-scan base-package="com.scalosoft.template" />
-	
-	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 </beans>
